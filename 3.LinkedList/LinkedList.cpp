@@ -157,10 +157,66 @@ void LinkedList::Print()
 	}
 }
 
-void LinkedList::MyNodeSort()
+void LinkedList::MyNodeSort() //길이는 count
 {
-	Node* current;
-	Node* trail;
-	
+	Node* current = head;
+	Node* trail = nullptr;
+	Node* temp = nullptr;
+	Node* previous = nullptr;
+	for (int i = 0; i < count - 1; ++i)
+	{
+		std::cout << "i가 " << i << "일 때!\n";
+		for (int j = 0; j < count - i - 1; ++j)
+		{
+			trail = current->next;
+			temp = trail->next;
+			if (current->data > (current->next)->data && current == head)
+			{
+				trail->next = head;
+				head = trail;
+				current->next = temp;
+
+
+				previous = trail;
+				current = trail->next;
+				Print();
+				std::cout << "\n";
+				continue;
+			}
+			else if (current->data > (current->next)->data && current != head)
+			{
+				trail->next = current;
+				current->next = temp;
+				previous->next = trail;
+
+
+				previous = trail;
+				current = trail->next;
+				Print();
+				std::cout << "\n";
+				continue;
+			}
+			Print();
+			std::cout << "\n";
+
+			previous = current;
+			current = current->next;
+
+		}
+		current = head;
+	}
+}
+
+void LinkedList::ChangeHead()
+{
+	Node* current = head;
+	head = current->next;
+}
+
+void LinkedList::Swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
 }
 

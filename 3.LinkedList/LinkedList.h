@@ -27,8 +27,10 @@ public:
     //°úÁ¦
     void MyNodeSort();
 
-    int GetCount() const;
+    void Swap(int &a, int &b);
 
+
+    void ChangeHead();
     //int operator=(Node* noding)
     //{
     //    if (noding != nullptr)
