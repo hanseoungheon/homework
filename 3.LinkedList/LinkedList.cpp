@@ -159,35 +159,8 @@ void LinkedList::Print()
 
 void LinkedList::MyNodeSort()
 {
-	//오름차순으로 정의?
-	//어떻게? -> 하나씩 하나씩 비교해가며 버블정렬해보자
-	Node* current = head;
-	Node* trail = nullptr;
-	Node* bubble = nullptr;
-	Node* temp = nullptr;
-
-	for (int i = 0; i < count; i++)
-	{
-		trail = current;
-		bubble = current;
-		for(int j = 0; j < i; i++)
-		{
-			if (bubble > bubble->next)
-			{
-				temp = bubble->next;
-				bubble->next = bubble;
-				bubble = temp;
-			}
-			if(bubble->next != nullptr)
-				bubble = bubble->next;
-		}
-		Print();
-		current = current->next;
-	}
-	//Print();
+	Node* current;
+	Node* trail;
+	
 }
 
-int LinkedList::GetCount() const
-{
-	return count;
-}

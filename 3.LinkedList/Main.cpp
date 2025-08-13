@@ -39,7 +39,7 @@ int main()
 
 	while (true)
 	{
-		std::cout << "현재 카운트 수 : " << list.GetCount() << "\n";
+		std::cout << "현재 카운트 수 : " << list.GetCount() << "\n";	
 		std::cout << "오름차순으로 정렬을 원하시면 s, 아니면 q를 입력해주세요.";
 		std::cin >> input;
 		if (strcmp(input, "q") == 0 || strcmp(input, "Q") == 0)
@@ -54,7 +54,7 @@ int main()
 
 		//list.Print();
 	}
-
+	
 	//데이터 삭제 루프
 	while (true)
 	{

@@ -60,6 +60,60 @@ public:
 
 	}
 
+	//첫 위치에 새로윤 노드 추가하는 함수
+	void PushFirst(const T& newData)
+	{
+		Node<T>* newNode = new Node<T>();
+		newNode->data = newData;
+		
+		Node<T>* next = first->next;
+		newNode->next = next;
+		first->next = newNode;
+		newNode->previous = first;
+		next->previous = newNode;
+
+		++count;
+	}
+
+	//삭제하기
+	void Delete(const T& deleteData)
+	{
+		//비어있음
+		if (first->next = nullptr)
+		{
+			std::cout << "리스크가 비어 있어 노드를 삭제할 수 없습니다.";
+			return;
+		}
+
+		Node<T>* deleteNode = first->next;
+
+		while (deleteNode != nullptr && deleteNode != last)
+		{
+			if (deleteNode->data == deleteData)
+			{
+				break;
+			}
+
+			//못찾았으면 다음노드로
+			deleteNode = deleteNode->next;
+		}
+		
+
+		//못찾음
+		if (deleteNode == nullptr || deleteNode = last)
+		{
+			std::cout << "삭제할 노드를 찾지 못했습니다.\n";
+			return;
+		}
+
+		deleteNode->previous->next = deleteNode->next;
+		deleteNode->next->previous = deleteNode->previous;
+
+		SafeDelete(deleteNode);
+
+		--count;
+	}
+
 	void Print()
 	{
 		Node<T>* current = first->next;
