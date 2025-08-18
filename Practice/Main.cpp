@@ -32,19 +32,23 @@
 //}
 
 #include <iostream>
+using namespace std;
 
-
-
-void Modify(int & x)
+class Base
 {
-	x *= 2;
-}
+public:
+    virtual void Show() { cout << "Base\n"; }
+};
+
+class Derived : public Base
+{
+public:
+    virtual void Show() override { cout << "Derived\n"; }
+};
 
 int main()
 {
-	int number[] = {5,2};
-	Modify(number);
-	std::cout << number;
-
-	return 0;
+    Base* b = new Derived();
+    b->Show();
+    delete b;
 }
