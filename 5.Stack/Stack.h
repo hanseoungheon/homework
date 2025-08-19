@@ -28,7 +28,7 @@ public:
 
 	//스택이 비었는지 확인
 	bool IsEmpty() const
-	{
+	{	
 		return count == 0;
 	}
 

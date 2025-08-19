@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+	#include "LinkedList.h"
 #include <iostream>
 
 LinkedList::LinkedList()
@@ -105,7 +105,7 @@ void LinkedList::Delete(int data)
 		{
 			break;
 		}
-
+			
 		//못찾았으면 검색 이어감
 		trail = current;
 		current = current->next;

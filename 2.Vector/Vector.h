@@ -70,7 +70,7 @@ public:
 			__debugbreak();
 		}
 
-		return data[index];
+		return data[index];		
 	}
 
 	//접근 함수 및 설정함수
