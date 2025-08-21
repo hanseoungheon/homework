@@ -1,5 +1,5 @@
 #pragma once
-	
+#include <iostream>	
 #include "List.h"
 #include "Node.h"
 
@@ -15,7 +15,43 @@ public:
 
 	~Tree()
 	{
-		//Todo: 자손 모두 삭제하는 함수 구현 후 호출해야 함.
+		List<Node<T>*>& childern = root->GetChildern();
+		
+		while (childern.Size() > 0)
+		{
+			root->ReMoveChild(childern[0]);
+		}
+
+		delete root;
+		root = nullptr;
+	}
+
+	bool ReMove(const T& data)
+	{
+		//Todo: 삭제할 노드를 검색하고, 삭제하는 함수 작성 후 호출.
+		Node<T>* outNode = nullptr;
+		bool result = Find(data, outNode);
+		
+		if (result == false) //검색실패
+		{
+			std::cout << "삭제할 노드를 찾지 못했습니다.\n";
+
+			return false;
+		}
+
+		//여기까지 오면 검색 성공.
+		//경우의 수1: 삭제할 노드가 루트 노드인 경우
+		if (outNode == root)
+		{
+			std::cout << "루트는 제거할 수 없습니다.\n";
+			return false;
+		}
+
+		//경우의 수2:
+		Node<T>* parent = outNode->GetParent();
+		parent->ReMoveChild(outNode);
+
+		return true;
 	}
 
 	void AddChild(const T& parentData, const T& childData)
@@ -75,6 +111,43 @@ public:
 		//검색 실패
 		outNode = nullptr;
 		return false;
+	}
+
+	//전위 순회 함수(부모를 먼저 방문 -> 자손 방문)
+	void PreOrderTraverse()
+	{
+		PreOrderTraverseRecursive(root);
+	}
+
+	//전위 순회 재귀 함수.
+	//node: 방문할 기준 노드.
+	//depth: 출력할 때 부모-자손 구분을 위해 들여쓰기할 값.
+	void PreOrderTraverseRecursive(Node<T>* node, int depth = 0)
+	{
+		if (node == nullptr)
+		{
+			return;
+		}
+
+		for (int ix = 0; ix < depth; ++ix)
+		{
+			std::cout << "    ";
+		}
+
+		std::cout << node->GetData() << "\n";
+
+		List<Node<T>*>& children = node->GetChildern();
+
+		if (children.Size() == 0)
+		{
+			return;
+		}
+
+		for (int ix = 0; ix < children.Size(); ++ix)
+		{
+			Node<T>* child = children[ix];
+			PreOrderTraverseRecursive(child, depth + 1);
+		}
 	}
 
 private:
