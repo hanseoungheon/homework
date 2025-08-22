@@ -26,10 +26,7 @@ public:
 		return color;
 	}
 
-	const char* GetColorString() const
-	{
-
-	}
+	const char* GetColorString() const;
 
 	Node* GetParent() const
 	{

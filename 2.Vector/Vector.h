@@ -28,7 +28,7 @@ public:
 	{
 		if (size == capactiy)
 		{
-			//TODO: 새로운 공간에 재할당 필요함(이사)
+			//TODO: 새로운 공간에 재할당 필요함(이사)		
 
 			ReAllocate(capactiy * 2);
 		}
